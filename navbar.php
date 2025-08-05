@@ -16,7 +16,7 @@
             <li><a href="about.php">About</a></li>
             <li><a href="all-lawyers.php">Lawyers</a></li>
             <li><a href="content.php">Contact</a></li>
-            <li><a href="lawyer-signup.php">SignUp/login</a></li>
+            <li><a href="user-signup.php">SignUp/login</a></li>
         </ul>
     </nav>
       <div class="menu-icon" onclick="toggleMenu()">

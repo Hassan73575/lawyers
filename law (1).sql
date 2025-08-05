@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2025 at 03:17 PM
+-- Generation Time: Aug 05, 2025 at 10:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -107,7 +107,8 @@ CREATE TABLE `lawyers` (
 
 INSERT INTO `lawyers` (`id`, `name`, `email`, `gender`, `city`, `password`, `specialty`, `experience`, `photo`) VALUES
 (1, 'Muhammad Akram', 'Akram321@gmail.com', 'Male', 'Karachi', 'Akram123', 'Criminal Law', 6, 'uploads/1754008570_lawyer1.jpg'),
-(2, 'Shakir Hussain', 'Shakir456@gmail.com', 'Male', 'Lahore', 'shakir456', 'Family Law', 10, 'uploads/1754009133_lawter.jpg');
+(2, 'Shakir Hussain', 'Shakir456@gmail.com', 'Male', 'Lahore', 'shakir456', 'Family Law', 10, 'uploads/1754009133_lawter.jpg'),
+(3, 'hassan', 'hassan@gmail.com', 'Male', 'karachi', 'hassan123', 'Sexual Harassment Lawyer', 2, 'img/troll-face-minimalism-memes-wallpaper-preview.jpg');
 
 -- --------------------------------------------------------
 
@@ -191,7 +192,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `lawyers`
 --
 ALTER TABLE `lawyers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

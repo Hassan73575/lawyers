@@ -56,12 +56,12 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
             padding: 2rem;
             color: var(--text-light);
         }
-
 /* Main Content Styles */
 .main-content {
     flex: 1;
     background: #f5f6fa;
-    margin-top: 55px;
+    margin-top: 80px;
+    margin-left: 10px;
 }
 
 .top-bar {
@@ -236,7 +236,7 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
 <body>
     <?php include 'navbar.php'?>
     <div class="d-flex flex-column flex-md-row" id="abbu">
-         <div class="admin-sidebar">
+        <div class="admin-sidebar">
             <h3 class="mb-4">VIP Admin</h3>
             <nav>
                 <a href="lawyer-dashboard.php" class="nav-link active">
@@ -247,7 +247,7 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                     <i class="fas fa-user-tie me-2"></i>
                     <span>Profile</span>
                 </a>
-                <a href="lawyers-appointments.php" class="nav-link">
+                <a href="appointments.php" class="nav-link">
                     <i class="fas fa-calendar me-2"></i>
                     <span>Appointments</span>
                 </a>
@@ -259,77 +259,6 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
         </div>
         <div class="main-content">
 
-            <!-- Top Bar -->
-            <div class="top-bar">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-                <div class="user-profile">
-                    <span class="notification">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
-                    </span>
-                    <img src="https://placehold.co/40x40" alt="Profile">
-                    <span>
-                        <?php 
-                        include 'dbconnect.php';
-                        $query = "SELECT * FROM `lawyers`;";
-                        $exe = mysqli_query($conn,$query);
-                        while($row = mysqli_fetch_assoc($exe)){
-                            echo $row['name'];
-                        }
-                        ?>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Dashboard Content -->
-            <div class="dashboard-content">
-                <!-- Stats Cards -->
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Today's Appointments</h3>
-                            <p><?php 
-                            include 'dbconnect.php';
-                            $query = "SELECT * FROM appointments";
-                            $exe = mysqli_query($conn,$query);
-                            $row = mysqli_num_rows($exe);
-                            echo "$row"
-                            ?></p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Active Cases</h3>
-                            <p>24</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>Total Clients</h3>
-                            <p><?php 
-                    include 'dbconnect.php';
-                    $query = "SELECT * FROM appointments";
-                    $exe = mysqli_query($conn,$query);
-                    $row = mysqli_fetch_assoc($exe);
-                    echo "$row[id]"
-                    
-                    ?></p>
-                        </div>
-                    </div>
-                </div>
- 
                 <!-- Appointments Section -->
                 <div class="appointments-section">
                     <table class="table table-striped table-bordered table-hover table-responsive table-sm">

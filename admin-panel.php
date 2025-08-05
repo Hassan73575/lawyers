@@ -119,21 +119,17 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <i class="fas fa-users me-2"></i>
                     <span>Lawyers Panel</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="admin-lawyers.php" class="nav-link">
                     <i class="fas fa-user-tie me-2"></i>
-                    <span>Clients</span>
+                    <span>All-Lawyers</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="appointments.php" class="nav-link">
                     <i class="fas fa-calendar me-2"></i>
                     <span>Appointments</span>
                 </a>
-                <a href="#" class="nav-link">
-                    <i class="fas fa-money-bill-wave me-2"></i>
-                    <span>Revenue</span>
-                </a>
-                <a href="#" class="nav-link">
+                <a href="admin-logout.php" class="nav-link">
                     <i class="fas fa-cog me-2"></i>
-                    <span>Settings</span>
+                    <span>logout</span>
                 </a>
             </nav>
         </div>
@@ -143,9 +139,16 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
             <div class="admin-header d-flex justify-content-between align-items-center">
                 <h3>Dashboard Overview</h3>
                 <div class="d-flex align-items-center">
-                    <a href="admin-logout.php"><button class="btn btn-sm btn-danger">logout</button></a>
                     <i class="fas fa-bell me-3"></i>
                     <i class="fas fa-user-circle"></i>
+                    <span><?php 
+                        include 'dbconnect.php';
+                        $query = "SELECT * FROM `admin`;";
+                        $exe = mysqli_query($conn,$query);
+                        while($row = mysqli_fetch_assoc($exe)){
+                            echo $row['name'];
+                        }
+                        ?></span>
                 </div>
             </div>
 
@@ -211,8 +214,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                             <th>Client</th>
                             <th>Case-Type</th>
                             <th>Description</th>
-                            <th>Status</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -228,14 +229,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['lawyer_type']; ?></td>
                             <td><?php echo $row['details']; ?></td>
-                            <td><a href=""<?php echo $row['id']; ?> class="btn btn-sm btn-primary">Active</a></td>
-                            <td>
-                                <a href="delete-case.php?id=<?php echo $row['id']; ?>"
-                                    class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete this data?');">
-                                    Delete
-                                </a>
-                            </td>
                         </tr>
                         <?php
                     }

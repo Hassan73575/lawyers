@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is logged in
 if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true) {
     echo "<script>
         alert('Please login to hire a lawyer');
@@ -18,6 +16,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
     <title>Hire a Lawyer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<?php include 'navbar.php' ?>
 <body class="bg-light">
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -71,6 +70,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <?php 'footer.php'?>
 </body>
 </html>
 <?php

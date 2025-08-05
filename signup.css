@@ -157,7 +157,11 @@ body {
 .dropdown-list li:hover {
     background: #f0f0f0;
 }
-
+.dropdown-list li a{
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+}
 .form-wrapper {
     display: flex;
     justify-content: center;

@@ -51,6 +51,19 @@
                 <input type="password" placeholder="Password" required name="password">
             </div>
 
+             <div class="custom-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>Sign up as </span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="dropdown-list">
+                    <li><a href="user-signup.php">User</a></li>
+                    <li><a href="lawyer-signup.php">Lawyer</a></li>
+                    <li><a href="admin-login.php">Admin</a></li>
+                </ul>
+                <input type="hidden" name="gender" required>
+            </div>
+
 
             <button type="submit" class="submit-btn" name="submit">Sign Up</button>
 

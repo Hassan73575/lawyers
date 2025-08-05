@@ -59,6 +59,9 @@ if(isset($_POST['submit'])) {
     if($row == 1){
         $_SESSION['lawyer_logged_in'] = true;
         $_SESSION['lawyer_email'] = $email;
+        $_SESSION['lawyer_id'] = $row['id'];
+        $_SESSION['lawyer_name'] = $row['name'];
+        $_SESSION['lawyer_image'] = $row['image_path'];
         echo "<script>alert('Login Successful');
         window.location.href = 'lawyer-dashboard.php';
         </script>";
