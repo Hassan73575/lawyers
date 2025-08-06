@@ -3,6 +3,10 @@ session_start();
 include 'dbconnect.php';
 
 $lawyer_id = $_SESSION['lawyer_id'];
+echo        $_SESSION['lawyer_email'];
+echo        $_SESSION['lawyer_id'];
+echo        $_SESSION['lawyer_name'];
+echo        $_SESSION['lawyer_image'];
 $query = "SELECT * FROM lawyers ";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
@@ -56,7 +60,7 @@ $row = mysqli_fetch_assoc($result);
 <body>
 
 <div class="profile-container">
-    <img class="profile-img" src="img/<?php echo $row['image_path']; ?>" alt="Lawyer Image">
+    <img class="profile-img" src="<?php echo $_SESSION['lawyer_image']; ?>" alt="Lawyer Image">
     <h2><?php echo $row['name']; ?></h2>
     <p><strong>Email:</strong> <?php echo $row['email']; ?></p>
     <p><strong>Specialization:</strong> <?php echo $row['specialty']; ?></p>

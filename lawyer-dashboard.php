@@ -272,9 +272,11 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                     </span>
                     <img src="https://placehold.co/40x40" alt="Profile">
                     <span>
+
                         <?php 
+                        $lid = $_SESSION['lawyer_id'];
                         include 'dbconnect.php';
-                        $query = "SELECT * FROM `lawyers`;";
+                        $query = "SELECT * FROM `lawyers` where id = $lid;";
                         $exe = mysqli_query($conn,$query);
                         while($row = mysqli_fetch_assoc($exe)){
                             echo $row['name'];

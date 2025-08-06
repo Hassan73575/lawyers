@@ -55,13 +55,14 @@ if(isset($_POST['submit'])) {
 
     $query = "SELECT * FROM `lawyers` WHERE email = '$email' AND password = '$password';";
     $result = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($result);
     $row = mysqli_num_rows($result);
     if($row == 1){
         $_SESSION['lawyer_logged_in'] = true;
         $_SESSION['lawyer_email'] = $email;
-        $_SESSION['lawyer_id'] = $row['id'];
-        $_SESSION['lawyer_name'] = $row['name'];
-        $_SESSION['lawyer_image'] = $row['image_path'];
+        $_SESSION['lawyer_id'] = $data['id'];
+        $_SESSION['lawyer_name'] = $data['name'];
+        $_SESSION['lawyer_image'] = $data['photo'];
         echo "<script>alert('Login Successful');
         window.location.href = 'lawyer-dashboard.php';
         </script>";
