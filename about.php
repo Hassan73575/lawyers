@@ -6,6 +6,7 @@
     <meta name="description" content="Learn about our law firm's mission, vision, and expert legal team">
     <title>About Us - Law Firm</title>
     <link rel="stylesheet" href="style.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -89,7 +90,7 @@
       <h3 class="section-title">Meet Our Lawyers</h3>
       <div class="team">
         <div class="lawyer-profile">
-          <img src="download.jfif" alt="Lawyer Photo">
+          <img src="user1.jpg" alt="Lawyer Photo">
           <div class="lawyer-details">
             <h4>Advocate Sarah Ahmed</h4>
             <p>With 15+ years of experience in corporate and criminal law, Sarah leads the litigation team with unmatched passion and results.</p>
@@ -97,7 +98,7 @@
         </div>
   
         <div class="lawyer-profile">
-          <img src="download (1).jfif" alt="Lawyer Photo">
+          <img src="user.jpg" alt="Lawyer Photo">
           <div class="lawyer-details">
             <h4>Advocate Bilal Khan</h4>
             <p>Bilal specializes in family law and civil disputes. Known for his empathy and negotiation skills, he ensures peaceful and fair resolutions.</p>

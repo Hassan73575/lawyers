@@ -61,6 +61,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         .vip-table {
             background: white;
             border-radius: 10px;
+            border: 2px sloid #1a426bff;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 1.5rem;
         }
@@ -107,17 +108,20 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 <body>
     <?php include 'navbar.php' ?>
     <div class="admin-container">
-        <!-- Sidebar -->
-        <div class="admin-sidebar">
+    <div class="admin-sidebar">
             <h3 class="mb-4">VIP Admin</h3>
             <nav>
                 <a href="admin-panel.php" class="nav-link active">
                     <i class="fas fa-tachometer-alt me-2"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="lawyer-dashboard.php" class="nav-link">
+                <a href="admin-active.php" class="nav-link">
                     <i class="fas fa-users me-2"></i>
-                    <span>Lawyers Panel</span>
+                    <span>Active</span>
+                </a>
+                <a href="admin-pending.php" class="nav-link">
+                    <i class="fas fa-users me-2"></i>
+                    <span>Pending</span>
                 </a>
                 <a href="admin-lawyers.php" class="nav-link">
                     <i class="fas fa-user-tie me-2"></i>
@@ -129,7 +133,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                 </a>
                 <a href="admin-logout.php" class="nav-link">
                     <i class="fas fa-cog me-2"></i>
-                    <span>Logout</span>
+                    <span>logout</span>
                 </a>
             </nav>
         </div>
@@ -162,7 +166,19 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                            <td><?php echo $row['name']; ?></td>
                            <td><?php echo $row['lawyer_type']; ?></td>
                            <td><?php echo $row['details']; ?></td>
-                           <td><a href=""<?php echo $row['id']; ?> class="btn btn-sm btn-primary">Active</a></td>
+                            <td><?php    
+                             $id = $row['id'];
+                                  if($row['status'] == 1 ){
+
+                                    echo "<a href='?active=$id' class='badge bg-success text-decoration-none' >active</a>";
+                                    
+                                  }else{
+                                    
+                                    echo "<a href='?inactive=$id' class='badge bg-danger text-decoration-none' >Inactive</a>";
+                                  }
+                                
+                                ?></td>
+                           <!-- <td><a href=""<?php echo $row['id']; ?> class="btn btn-sm btn-primary">Active</a></td> -->
                            <td>
                                <a href="delete-case.php?id=<?php echo $row['id']; ?>"
                                    class="btn btn-sm btn-danger"
@@ -190,3 +206,34 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 </body>
 </html>
+<?php 
+include 'dbconnect.php';
+if(isset($_GET['active'])){
+  $id = $_GET['active'];
+
+  $query = "UPDATE `appointments` SET `status`= 0  WHERE  id='$id'";
+  $exe = mysqli_query($conn,$query);
+
+  if($exe){
+    echo "<script>
+      window.location.href='appointments.php';
+    </script>";
+  }
+}
+
+
+
+if(isset($_GET['inactive'])){
+  $id = $_GET['inactive'];
+
+  $query = "UPDATE `appointments` SET `status`=1  WHERE id='$id'";
+  $exe = mysqli_query($conn,$query);
+
+  if($exe){
+    echo "<script>
+      window.location.href='appointments.php';
+    </script>";
+  }
+}
+
+?>

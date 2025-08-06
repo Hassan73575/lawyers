@@ -1,9 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
+    echo "<script>
+        alert('Please login to hire a lawyer');
+        window.location.href = 'user-login.php';
+    </script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawyer Profile Card</title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -298,7 +309,7 @@
                 </div>
             </div>
              <button class="hire-button" onclick="hireLawyer()">
-                <a href="hire-lawyer.php">📞 Hire Sarah Johnson</a>
+                <a href="hirelawyer.php">📞 Hire Sarah Johnson</a>
             </button>
         </div>
     </div>

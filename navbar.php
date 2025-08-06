@@ -13,10 +13,11 @@
         <div class="logo">JUSTICE LAW</div>
         <ul class="nav-links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="about.php">About</a></li>
             <li><a href="all-lawyers.php">Lawyers</a></li>
+            <li><a href="user-appointment.php">Appointments</a></li>
+            <li><a href="about.php">About</a></li>
             <li><a href="content.php">Contact</a></li>
-            <li><a href="user-signup.php">SignUp/login</a></li>
+            <li><a href="user-login.php"><i class="fas fa-user"></i></a></li>
         </ul>
     </nav>
       <div class="menu-icon" onclick="toggleMenu()">

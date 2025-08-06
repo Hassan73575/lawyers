@@ -60,6 +60,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
         .vip-table {
             background: white;
+            border:2px solid #1a426bff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 1.5rem;
@@ -115,9 +116,13 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <i class="fas fa-tachometer-alt me-2"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="lawyer-dashboard.php" class="nav-link">
+                <a href="admin-active.php" class="nav-link">
                     <i class="fas fa-users me-2"></i>
-                    <span>Lawyers Panel</span>
+                    <span>Active</span>
+                </a>
+                <a href="admin-pending.php" class="nav-link">
+                    <i class="fas fa-users me-2"></i>
+                    <span>Pending</span>
                 </a>
                 <a href="admin-lawyers.php" class="nav-link">
                     <i class="fas fa-user-tie me-2"></i>
@@ -138,17 +143,17 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         <div class="admin-content">
             <div class="admin-header d-flex justify-content-between align-items-center">
                 <h3>Dashboard Overview</h3>
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-bell me-3"></i>
+                <div class="d-flex align-items-center g-2">
+                    <i class="fas fa-bell me-3 "></i>
                     <i class="fas fa-user-circle"></i>
-                    <span><?php 
+                    <h4><?php 
                         include 'dbconnect.php';
                         $query = "SELECT * FROM `admin`;";
                         $exe = mysqli_query($conn,$query);
                         while($row = mysqli_fetch_assoc($exe)){
                             echo $row['name'];
                         }
-                        ?></span>
+                        ?></h4>
                 </div>
             </div>
 
@@ -212,6 +217,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                         <tr>
                             <th>Case ID</th>
                             <th>Client</th>
+                            <th>Email</th>
                             <th>Case-Type</th>
                             <th>Description</th>
                         </tr>
@@ -227,6 +233,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                         <tr>
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['lawyer_type']; ?></td>
                             <td><?php echo $row['details']; ?></td>
                         </tr>

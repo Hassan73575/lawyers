@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true) {
+if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
     echo "<script>
         alert('Please login to hire a lawyer');
         window.location.href = 'user-login.php';
@@ -15,6 +15,8 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hire a Lawyer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 </head>
 <?php include 'navbar.php' ?>
 <body class="bg-light">
@@ -82,8 +84,9 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
     $lawyer = $_POST['lawyer'];
     $case_details = $_POST['case_details'];
+    $status=0;
 
-    $query = "INSERT INTO appointments (name, email, password, lawyer_type, details) VALUES ('$name', '$email', '$password', '$lawyer', '$case_details')";
+    $query = "INSERT INTO appointments (name, email, password, lawyer_type, details,status) VALUES ('$name', '$email', '$password', '$lawyer', '$case_details','$status')";
     $result = mysqli_query($conn, $query);
     if($result) {
         echo "<script>alert('Appointment request submitted successfully!');

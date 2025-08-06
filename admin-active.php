@@ -61,6 +61,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         .vip-table {
             background: white;
             border-radius: 10px;
+            border: 2px sloid #1a426bff;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 1.5rem;
         }
@@ -138,28 +139,26 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
             </nav>
         </div>
         <div class="admin-content">
-        <h2>Our Lawyers</h2>
+        <h2>Our total Appointments</h2>
         <div class="vip-table">
-               <h3 class="mb-4">Lawyers</h3>
+               <h3 class="mb-4">Recent Cases</h3>
                
                <table class="table table-striped table-bordered table-hover table-responsive table-sm">
                    <thead class="table-dark text-center align-middle ">
                        <tr>
-                           <th>lawyer ID</th>
-                           <th>L-name</th>
-                           <th>lawyer-Type</th>
+                           <th>Case ID</th>
+                           <th>Client</th>
+                           <th>Email</th>
+                           <th>Case-Type</th>
                            <th>Description</th>
-                           <th>gender</th>
-                           <th>city</th>
-                           <th>speciality</th>
-                           <th>Action</th>
+                           <th>Status</th>
                        </tr>
                    </thead>
                    <tbody class="text-center">
                        <?php
                        include 'dbconnect.php';
 
-                       $query = "SELECT * FROM lawyers";
+                       $query = "SELECT * FROM appointments WHERE status = 1";
                        $result = mysqli_query($conn, $query);
                        while ($row = mysqli_fetch_assoc($result)) {
                        ?>
@@ -167,17 +166,10 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                            <td><?php echo $row['id']; ?></td>
                            <td><?php echo $row['name']; ?></td>
                            <td><?php echo $row['email']; ?></td>
-                           <td><?php echo $row['password']; ?></td>
-                           <td><?php echo $row['gender']; ?></td>
-                           <td><?php echo $row['city']; ?></td>
-                           <td><?php echo $row['specialty']; ?></td>
-                           <td>
-                               <a href="delete-case.php?id=<?php echo $row['id']; ?>"
-                                   class="btn btn-sm btn-danger"
-                                   onclick="return confirm('Are you sure you want to delete this data?');">
-                                   Delete
-                               </a>
-                           </td>
+                           <td><?php echo $row['lawyer_type']; ?></td>
+                           <td><?php echo $row['details']; ?></td>
+                           <td><?php echo "<a href='' class='badge bg-success text-decoration-none' >active</a>";
+ ?></td>
                        </tr>
                        <?php
                    }
@@ -186,11 +178,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                </table>
            </div>
         </div>
-
-
     </div>
-    <?php include 'footer.php' ?>
     
-
+    <?php include 'footer.php' ?>
 </body>
 </html>

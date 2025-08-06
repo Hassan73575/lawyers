@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,16 +66,18 @@ if (isset($_POST["submit"])){
 
     $query = "SELECT * FROM `user` WHERE user_email = '$email' AND user_pass = '$password'";
     $execute = mysqli_query($conn , $query);
+    $data = mysqli_fetch_assoc($execute);
 
     $row = mysqli_num_rows($execute);
 
     if($row == 1){
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
+        $_SESSION['user_id'] = $data['id'];
+        $_SESSION['useremail'] = $email;
+        $_SESSION['userpassword'] = $password;
 
         echo "<script>
-        alert ('Login Successfully')
-        window.location.href = 'lawyer.php';
+        alert ('Login Successfully');
+        window.location.href = 'hirelawyer.php';
         </script>";
 
     }else{

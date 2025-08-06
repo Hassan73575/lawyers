@@ -25,7 +25,7 @@
                     <div class="lawyer-contact">
                         <a href="#"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="hirelawyer.php"><button class="button"> Hire Lawyer</button></a>
+                        <a href="lawyer-profile1.php"><button class="button">View Profile</button></a>
                     </div>
                 </div>
                 
@@ -40,7 +40,7 @@
                     <div class="lawyer-contact">
                         <a href="#"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="hirelawyer.php"><button class="button"> Hire Lawyer</button></a>
+                        <a href="lawyer-profile2.php"><button class="button">View Profile</button></a>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                     <div class="lawyer-contact">
                         <a href="#"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="hirelawyer.php"><button class="button"> Hire Lawyer</button></a>
+                        <a href="lawyer-profile3.php"><button class="button">View profile</button></a>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                     <div class="lawyer-contact">
                         <a href="#"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="hirelawyer.php"><button class="button"> Hire Lawyer</button></a>
+                        <a href="lawyer-profile4.php"><button class="button">View Profile</button></a>
                     </div>
                 </div>
                 <div class="lawyer-card">
@@ -84,7 +84,7 @@
                     <div class="lawyer-contact">
                         <a href="#"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="hirelawyer.php"><button class="button"> Hire Lawyer</button></a>
+                        <a href="lawyer-profile5.php"><button class="button">View profile</button></a>
                     </div>
                 </div>
             </div>

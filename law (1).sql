@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2025 at 10:43 PM
+-- Generation Time: Aug 06, 2025 at 10:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,19 +49,24 @@ INSERT INTO `admin` (`id`, `name`, `pass`, `isadmin`) VALUES
 
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `lawyer_id` int(11) NOT NULL,
   `name` varchar(55) NOT NULL,
   `email` varchar(55) NOT NULL,
   `password` int(11) NOT NULL,
   `lawyer_type` varchar(55) NOT NULL,
-  `details` varchar(500) NOT NULL
+  `details` varchar(500) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `name`, `email`, `password`, `lawyer_type`, `details`) VALUES
-(4, 'kashan majeed', 'kashan@gmail.com', 0, 'Bullying Lawyer', 'i want to hire a bullying lawyer ');
+INSERT INTO `appointments` (`id`, `client_id`, `lawyer_id`, `name`, `email`, `password`, `lawyer_type`, `details`, `status`) VALUES
+(4, 0, 0, 'kashan majeed', 'kashan@gmail.com', 0, 'Bullying Lawyer', 'i want to hire a bullying lawyer ', 1),
+(5, 0, 0, 'hassan', 'hassan@gmail.com', 0, 'Family Lawyer', 'i want to hire a family lawyer ', 0),
+(6, 0, 0, 'nameer', 'nameer@gmail.com', 0, 'Cyber Law Lawyer', 'i want to choose a cuber law lawyer', 0);
 
 -- --------------------------------------------------------
 
@@ -107,8 +112,7 @@ CREATE TABLE `lawyers` (
 
 INSERT INTO `lawyers` (`id`, `name`, `email`, `gender`, `city`, `password`, `specialty`, `experience`, `photo`) VALUES
 (1, 'Muhammad Akram', 'Akram321@gmail.com', 'Male', 'Karachi', 'Akram123', 'Criminal Law', 6, 'uploads/1754008570_lawyer1.jpg'),
-(2, 'Shakir Hussain', 'Shakir456@gmail.com', 'Male', 'Lahore', 'shakir456', 'Family Law', 10, 'uploads/1754009133_lawter.jpg'),
-(3, 'hassan', 'hassan@gmail.com', 'Male', 'karachi', 'hassan123', 'Sexual Harassment Lawyer', 2, 'img/troll-face-minimalism-memes-wallpaper-preview.jpg');
+(2, 'Shakir Hussain', 'Shakir456@gmail.com', 'Male', 'Lahore', 'shakir456', 'Family Law', 10, 'uploads/1754009133_lawter.jpg');
 
 -- --------------------------------------------------------
 
@@ -130,7 +134,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_gender`, `user_city`, `user_pass`) VALUES
-(1, 'Kamran Khan', 'kamran07@gmail.com', 'Male', 'Karachi', 'kamran123');
+(1, 'Kamran Khan', 'kamran07@gmail.com', 'Male', 'Karachi', 'kamran123'),
+(2, 'hassan', 'hassan@gmail.com', '', 'sindh', 'hassan123');
 
 --
 -- Indexes for dumped tables
@@ -180,7 +185,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -198,7 +203,7 @@ ALTER TABLE `lawyers`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

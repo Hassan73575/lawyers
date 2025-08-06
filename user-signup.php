@@ -135,7 +135,9 @@ if (isset($_POST['submit'])) {
                         VALUES ('$fullname', '$email', '$gender', '$city', '$password')";
 
         if (mysqli_query($conn, $insertQuery)) {
-            echo "<script>alert('User registered successfully!');</script>";
+            echo "<script>alert('User registered successfully!');
+            window.location.href='index.php';
+            </script>";
         } else {
             echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
         }
