@@ -212,7 +212,13 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
     background: #f1c40f;
     color: white;
 }
-
+ .vip-table {
+            background: white;
+            border:2px solid #1a426bff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
 /* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
@@ -246,6 +252,14 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                 <a href="lawyer-profile.php" class="nav-link">
                     <i class="fas fa-user-tie me-2"></i>
                     <span>Profile</span>
+                </a>
+                <a href="lawyer-active.php" class="nav-link">
+                    <i class="fas fa-calendar me-2"></i>
+                    <span>Active</span>
+                </a>
+                <a href="lawyer-pending.php" class="nav-link">
+                    <i class="fas fa-calendar me-2"></i>
+                    <span>Pending</span>
                 </a>
                 <a href="lawyers-appointments.php" class="nav-link">
                     <i class="fas fa-calendar me-2"></i>
@@ -334,6 +348,7 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
  
                 <!-- Appointments Section -->
                 <div class="appointments-section">
+                    <div class="vip-table">
                     <table class="table table-striped table-bordered table-hover table-responsive table-sm">
                         <thead class="table-dark text-center align-middle text-nowrap">
                             <tr>
@@ -342,32 +357,50 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                                 <th>Client email</th>
                                 <th>Lawyer type</th>
                                 <th>Case Details</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                            <tbody class="text-center align-middle">
-                            <?php
-                            include 'dbconnect.php';
-                            $query= "SELECT * FROM appointments";
-                            $result = mysqli_query($conn, $query);
-                           ?> 
-                           <?php
-                           while($row = mysqli_fetch_assoc($result)){
-                               echo "<tr>";
-                               echo "<td>".$row['id']."</td>";
-                               echo "<td>".$row['name']."</td>";
-                               echo "<td>".$row['email']."</td>";
-                               echo "<td>".$row['lawyer_type']."</td>";
-                               echo "<td>".$row['details']."</td>";
-                               echo "<td>
-                                       <button class='btn btn-primary'>View</button>
-                                       <button class='btn btn-danger'>Delete</button>
-                                     </td>";
-                               echo "</tr>";
-                           }
-                           ?>
-                            </tbody>
+                            <tbody class="text-center">
+                                 <?php
+                       include 'dbconnect.php';
+
+                       $query = "SELECT * FROM appointments";
+                       $result = mysqli_query($conn, $query);
+                       while ($row = mysqli_fetch_assoc($result)) {
+                       ?>
+                       <tr>
+                           <td><?php echo $row['id']; ?></td>
+                           <td><?php echo $row['name']; ?></td>
+                           <td><?php echo $row['email']; ?></td>
+                           <td><?php echo $row['lawyer_type']; ?></td>
+                           <td><?php echo $row['details']; ?></td>
+                            <td><?php    
+                             $id = $row['id'];
+                                  if($row['status'] == 1 ){
+
+                                    echo "<a href='?active=$id' class='badge bg-success text-decoration-none' >active</a>";
+                                    
+                                  }else{
+                                    
+                                    echo "<a href='?inactive=$id' class='badge bg-danger text-decoration-none' >Inactive</a>";
+                                  }
+                                
+                                ?></td>
+                           <td>
+                               <a href="delete-case.php?id=<?php echo $row['id']; ?>"
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('Are you sure you want to delete this data?');">
+                                   Delete
+                               </a>
+                           </td>
+                       </tr>
+                       <?php
+                   }
+                   ?>
+               </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -380,3 +413,44 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
   <?php include 'footer.php'?>
 </body>
 </html>
+
+<?php 
+include 'dbconnect.php';
+
+if(isset($_GET['active'])){
+    $id = $_GET['active'];
+
+    $query = "UPDATE `appointments` SET `status`= 0  WHERE  id='$id'";
+    $exe = mysqli_query($conn,$query);
+
+    if($exe){
+        echo "<script>
+        window.location.href='lawyer-dashboard.php';
+        </script>";
+    }else{
+        echo "<script>
+        alert('bhai saab bhund ho gaya');
+        </script>";
+    }
+}
+
+
+
+if(isset($_GET['inactive'])){
+  $id = $_GET['inactive'];
+
+  $query = "UPDATE `appointments` SET `status`=1  WHERE id='$id'";
+  $exe = mysqli_query($conn,$query);
+
+  if($exe){
+    echo "<script>
+      window.location.href='lawyer-dashboard.php';
+    </script>";
+  }else{
+        echo "<script>
+        alert('bhai saab bhund ho gaya');
+        </script>";
+    }
+}
+
+?>

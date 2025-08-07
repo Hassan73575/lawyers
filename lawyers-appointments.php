@@ -247,7 +247,15 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                     <i class="fas fa-user-tie me-2"></i>
                     <span>Profile</span>
                 </a>
-                <a href="appointments.php" class="nav-link">
+                <a href="lawyer-active.php" class="nav-link">
+                    <i class="fas fa-calendar me-2"></i>
+                    <span>Active</span>
+                </a>
+                <a href="lawyer-pending.php" class="nav-link">
+                    <i class="fas fa-calendar me-2"></i>
+                    <span>Pending</span>
+                </a>
+                <a href="lawyers-appointments.php" class="nav-link">
                     <i class="fas fa-calendar me-2"></i>
                     <span>Appointments</span>
                 </a>
@@ -287,7 +295,6 @@ if (!isset($_SESSION['lawyer_logged_in']) || $_SESSION['lawyer_logged_in'] !== t
                                echo "<td>".$row['lawyer_type']."</td>";
                                echo "<td>".$row['details']."</td>";
                                echo "<td>
-                                       <button class='btn btn-primary'>View</button>
                                        <button class='btn btn-danger'>Delete</button>
                                      </td>";
                                echo "</tr>";
