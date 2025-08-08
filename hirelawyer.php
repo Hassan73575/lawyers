@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
+if (!isset($_SESSION['useremail']) || !isset($_SESSION['userpassword'])) {
     echo "<script>
         alert('Please login to hire a lawyer');
         window.location.href = 'user-login.php';

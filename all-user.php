@@ -134,49 +134,37 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
             </nav>
         </div>
         <div class="admin-content">
-        <h2>Our total Appointments</h2>
+        <h2>Our All Users</h2>
         <div class="vip-table">
-               <h3 class="mb-4">Recent Cases</h3>
+               <h3 class="mb-4">Recent Users</h3>
                
                <table class="table table-striped table-bordered table-hover table-responsive table-sm">
                    <thead class="table-dark text-center align-middle ">
                        <tr>
                            <th>Case ID</th>
-                           <th>Client</th>
-                           <th>Case-Type</th>
-                           <th>Description</th>
-                           <th>Status</th>
-                           <th>Actions</th>
+                           <th>User</th>
+                           <th>User-Email</th>
+                           <th>Gender</th>
+                           <th>City</th>
+                           <th>Action</th>
                        </tr>
                    </thead>
                    <tbody class="text-center">
                        <?php
                        include 'dbconnect.php';
 
-                       $query = "SELECT * FROM appointments";
+                       $query = "SELECT * FROM user";
                        $result = mysqli_query($conn, $query);
                        while ($row = mysqli_fetch_assoc($result)) {
                        ?>
                        <tr>
-                           <td><?php echo $row['id']; ?></td>
-                           <td><?php echo $row['name']; ?></td>
-                           <td><?php echo $row['lawyer_type']; ?></td>
-                           <td><?php echo $row['details']; ?></td>
-                            <td><?php    
-                             $id = $row['id'];
-                                  if($row['status'] == 1 ){
-
-                                    echo "<a href='?active=$id' class='badge bg-success text-decoration-none' >active</a>";
-                                    
-                                  }else{
-                                    
-                                    echo "<a href='?inactive=$id' class='badge bg-danger text-decoration-none' >Inactive</a>";
-                                  }
-                                
-                                ?></td>
-                           <!-- <td><a href=""<?php echo $row['id']; ?> class="btn btn-sm btn-primary">Active</a></td> -->
+                           <td><?php echo $row['user_id']; ?></td>
+                           <td><?php echo $row['user_name']; ?></td>
+                           <td><?php echo $row['user_email']; ?></td>
+                           <td><?php echo $row['user_gender']; ?></td>
+                           <td><?php echo $row['user_city']; ?></td>
                            <td>
-                               <a href="delete-case.php?id=<?php echo $row['id']; ?>"
+                               <a href="delete-user.php?id=<?php echo $row['user_id']; ?>"
                                    class="btn btn-sm btn-danger"
                                    onclick="return confirm('Are you sure you want to delete this data?');">
                                    Delete
@@ -201,34 +189,3 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 </body>
 </html>
-<?php 
-include 'dbconnect.php';
-if(isset($_GET['active'])){
-  $id = $_GET['active'];
-
-  $query = "UPDATE `appointments` SET `status`= 0  WHERE  id='$id'";
-  $exe = mysqli_query($conn,$query);
-
-  if($exe){
-    echo "<script>
-      window.location.href='appointments.php';
-    </script>";
-  }
-}
-
-
-
-if(isset($_GET['inactive'])){
-  $id = $_GET['inactive'];
-
-  $query = "UPDATE `appointments` SET `status`=1  WHERE id='$id'";
-  $exe = mysqli_query($conn,$query);
-
-  if($exe){
-    echo "<script>
-      window.location.href='appointments.php';
-    </script>";
-  }
-}
-
-?>

@@ -106,7 +106,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     </style>
 </head>
 <body>
-    <?php include 'navbar.php' ?>
     <div class="admin-container">
         <!-- Sidebar -->
         <div class="admin-sidebar">
@@ -180,6 +179,5 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         </div>
     </div>
     
-    <?php include 'footer.php' ?>
 </body>
 </html>

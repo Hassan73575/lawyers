@@ -106,7 +106,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     </style>
 </head>
 <body>
-    <?php include 'navbar.php' ?>
     <div class="admin-container">
         <!-- Sidebar -->
         <div class="admin-sidebar">
@@ -116,21 +115,18 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <i class="fas fa-tachometer-alt me-2"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="admin-active.php" class="nav-link">
+                <a href="all-user.php" class="nav-link">
                     <i class="fas fa-users me-2"></i>
-                    <span>Active</span>
+                    <span>All-Users</span>
                 </a>
-                <a href="admin-pending.php" class="nav-link">
-                    <i class="fas fa-users me-2"></i>
-                    <span>Pending</span>
-                </a>
+                
                 <a href="admin-lawyers.php" class="nav-link">
                     <i class="fas fa-user-tie me-2"></i>
                     <span>All-Lawyers</span>
                 </a>
                 <a href="appointments.php" class="nav-link">
                     <i class="fas fa-calendar me-2"></i>
-                    <span>Appointments</span>
+                    <span>All-Appointments</span>
                 </a>
                 <a href="admin-logout.php" class="nav-link">
                     <i class="fas fa-cog me-2"></i>

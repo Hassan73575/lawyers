@@ -1,13 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
-    echo "<script>
-        alert('Please login to hire a lawyer');
-        window.location.href = 'user-login.php';
-    </script>";
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
